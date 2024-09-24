@@ -39,6 +39,17 @@ function rellenaDias() {
 
         // En primer lugar, comprobamos si es no lectivo
         dia.festivo=esNoLectivo(d);
+        
+
+        // Si es lectivo, añadimos los turnos
+        if( dia.festivo==null ) {
+            for( let t of T ) {
+                if( t.dia==d.getDay() ) {
+                    dia.addTurno(t);
+                }
+            }
+        }
+
         D.push( dia);
         d.setDate(d.getDate()+1);
     }
