@@ -9,6 +9,8 @@ function Turno(
     , _hora_j
     , _profesores    
     , _lugar
+    , _fechaInicio
+    , _fechaFin
 ) {
     this.dia = _dia;
     this.numTurno= _numTurno;
@@ -17,7 +19,9 @@ function Turno(
     this.lugar = _lugar || "Albolote";
     this.comentarios = [];
     this.profesores = _profesores || [];
-    this.contador = 0;
+    this.fechaInicio = _fechaInicio || cuatrimestre.inicio;
+    this.fechaFin = _fechaFin || cuatrimestre.fin;
+    this.contador = (this.profesores.length?(cuatrimestre.inicio+cuatrimestre.fin) % this.profesores.length:0);
     this.desdoblarSi5 = false;
     this._primeraMuestra = false;
     this.nuevo = true
@@ -31,12 +35,50 @@ function Turno(
         this.contador = _contador;
         return this;
     }
+    this.incrementaContador = function () {
+        this.contador++;
+        this.contador = this.contador % this.profesores.length;
+        return this;
+    }
     this.cancelar = function (_comentario) {
         this.activo = false;
         this.comentarios.push("Cancelado el : "+_comentario);
         return this;
     }
 
+    this.comienza = function (_fecha) {
+        this.fechaInicio = _fecha;
+        return this;
+    }
+    this.finaliza = function (_fecha) {
+        this.fechaFin = _fecha;
+        return this;
+    }
+
+    // Devuelve la información del turno para un día concreto
+    // Actualiza el contador
+    // Actualiza si el conductor ha conducido o no
+    // Actualiza si hay cambios o no
+    this.getInfoParaDia = function() {
+        if( !this.activo ) return null;
+        let info = {
+            "numTurno": this.numTurno
+            , "hora_gr": this.hora_gr
+            , "hora_j": this.hora_j
+            , "conduce": this.profesores[this.contador]
+            , "acompanantes": this.profesores.slice(0,this.contador).concat(this.profesores.slice(this.contador+1))
+            , "lugar": this.lugar
+            , "comentarios": this.comentarios
+            , "desdoblarSi5": this.desdoblarSi5
+            , "nuevo": this.nuevo
+            , "cambio": this.cambio
+            , "contador": this.contador
+        }
+        this.incrementaContador();
+        this.nuevo = false;
+        this.cambio = false;
+        return info;
+    }   
 }
 
 // Constantes para los días de la semana

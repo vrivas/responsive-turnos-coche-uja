@@ -45,7 +45,10 @@ function rellenaDias() {
         if( dia.festivo==null ) {
             for( let t of T ) {
                 if( t.dia==d.getDay() ) {
-                    dia.addTurno(t);
+                    if( comparaFechas(t.fechaInicio,d)<=0 
+                        && comparaFechas(t.fechaFin,d)>=0 ) {
+                        dia.addTurno(t.getInfoParaDia());
+                    }
                 }
             }
         }
