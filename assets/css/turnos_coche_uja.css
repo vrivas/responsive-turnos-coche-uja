@@ -7,18 +7,22 @@
 
 }
 
-.hoy{
-    background-color: green;
-}
-.no-lectivo{
-    background-color: rgba(255, 200, 200, .8);
-}
-
 .fecha-dia {
     background-color: rgba(200, 200, 255, 1);
     text-align: right;
     padding-right: 0.3em;
 }
+.hoy{
+    background-color: rgba(200, 255, 200, .8);
+}
+.hoy .fecha-dia{
+    background-color: rgba(200, 255, 200, 1);
+}
+
+.no-lectivo{
+    background-color: rgba(255, 200, 200, .8);
+}
+
 
 .no-lectivo .fecha-dia {
     background-color: rgba(255, 200, 200, 1);
@@ -30,7 +34,7 @@
     color: white;
     font-weight: bold;
     font-size: 60%;
-    margin-left: .5em;
+    margin: auto;
     padding: 0 .5em 0 0.5em;
     width: 1.8em;
   }
@@ -65,14 +69,18 @@
     float: left;
     width: 3em;
     text-align: center;
-    border-right: 1pt solid rgba(200, 200, 255, .8);
+    border-right: 0pt solid rgba(200, 200, 255, .8);
   }
 
   .horas-y-personas {
     float: left;
-  }
+    width: auto;
+    margin-left: 0.2em;
+}
 
   .info-turno {
+    border-bottom: 1px dashed rgba(200, 200, 255, 1);
+    margin: .1em;
     clear: both;
   }
   .separador {

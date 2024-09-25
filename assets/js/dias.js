@@ -10,7 +10,7 @@ function diaToDiv( ) {
     clasesDia=clasesDia.join(" ");
     // Contenido de cada dia
     let divFecha=`<div class='fecha-dia'>${this.fecha.toDD_MMM()}</div>`;
-    let divEficiencia=`<div class='eficiencia-dia'>Eficiencia ${this.eficiencia}</div>`;
+    let divEficiencia=""//`<div class='eficiencia-dia'>Eficiencia ${this.eficiencia}</div>`;
     let divTurnos="";
     this.infoTurnos.filter( it => !null).forEach(it => divTurnos+=infoTurnoToDiv(it) );
 
