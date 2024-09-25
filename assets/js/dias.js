@@ -3,10 +3,20 @@ let D=[];
 
 function diaToDiv( ) {
     let msj="";
-    let clasesDia=[];
+    // clases aplicables al día
+    let clasesDia=["dia"];
     if( this.festivo!=null ) clasesDia.push("no-lectivo");
     if( this.fecha.toComparableString()==(new Date()).toComparableString() ) clasesDia.push("hoy");
-    return `<div class='${clasesDia.join(" ")}'>${this.fecha}</div>`
+    clasesDia=clasesDia.join(" ");
+    // Contenido de cada dia
+    let divFecha=`<div class='fecha-dia'>${this.fecha.toDD_MMM()}</div>`;
+    let divEficiencia=`<div class='eficiencia-dia'>${this.eficiencia}</div>`;
+    let divTurnos="";
+    return `<div class='${clasesDia}'>
+        ${divFecha}
+        ${divEficiencia}
+        ${divTurnos}
+    </div>`
 }
 // Objeto Dia
 function Dia( fecha ) {
