@@ -2,13 +2,19 @@ const NOMBRE_MESES_3_LETRAS = ["ene", "feb", "mar", "abr", "may", "jun", "jul", 
 function fecha( dia, mes, anio) {
     return new Date(anio, mes-1, dia)
 }
+
+function cerear(num,tam) {
+    tam=tam || 2;
+    tmp=("0000000000000"+num)
+    return tmp.substring(tmp.length-tam);
+}
 Date.prototype.toComparableString = function() {
     let year=this.getFullYear();
     let month=this.getMonth()+1;
     let day=this.getDate();
     return year+""+
-           (month<10?"0"+month:month)+""+
-           (day<10?"0"+day:day);
+           cerear(month)+""+
+           cerear(day);
 }
 
 Date.prototype.toDD_MMM_YYY = function() {
@@ -28,3 +34,5 @@ function comparaFechas( fecha1, fecha2 ) {
     if( fecha1.toComparableString() > fecha2.toComparableString() ) toRet=1;
     return toRet;
 }
+
+

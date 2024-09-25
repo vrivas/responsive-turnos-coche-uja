@@ -16,7 +16,7 @@ function Turno(
     this.numTurno= _numTurno;
     this.hora_gr = _hora_gr;
     this.hora_j = _hora_j;
-    this.lugar = _lugar || "Albolote";
+    this.lugar = _lugar || "";
     this.comentarios = [];
     this.profesores = _profesores || [];
     this.profesores.forEach(p => p.activo = true);
@@ -85,15 +85,15 @@ function Turno(
     }   
 }
 
-
 function infoTurnoToDiv(info) {
     if( info==null ) return "";
     let msj="";
     let clasesInfoTurno=["info-turno"];
-    let divNumTurno=`<div class='num-turno'>${info.numTurno}</div>`;
+    let divNumTurno=`<div class='num-turno'>${cerear(info.numTurno)}</div>`;
     let divNuevo=info.nuevo?"<div class='etiqueta-nuevo'>N</div>":"";
     let divCambio=info.cambio?"<div class='etiqueta-cambio'>M</div>":"";
-    let divHorario=`<div class='horario'>${info.hora_gr}-${info.hora_j}</div>`;
+    let spanLugar=(info.lugar)?`<span class="lugar">${info.lugar}</span><br/>`:"";
+    let divHorario=`<div class='horario'>${spanLugar}↑ ${info.hora_gr}-${info.hora_j} ↓</div>`;
     let spanConductor=`<span class="nombre-conductor">${info.conductor}</span>`;
     let spanAcompanantes=info.acompanantes.length>0?`<span class="nombres-acompanantes">(${info.acompanantes.join(", ")})</span>`:"";
     let divPersonas=`<div class='personas'>
