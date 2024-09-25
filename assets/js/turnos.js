@@ -19,9 +19,11 @@ function Turno(
     this.lugar = _lugar || "Albolote";
     this.comentarios = [];
     this.profesores = _profesores || [];
+    this.profesores.forEach(p => p.activo = true);
+    this.correos = this.profesores.map( p => p.correo ).join(", ");
     this.fechaInicio = _fechaInicio || cuatrimestre.inicio;
     this.fechaFin = _fechaFin || cuatrimestre.fin;
-    this.contador = (this.profesores.length?(cuatrimestre.inicio+cuatrimestre.fin) % this.profesores.length:0);
+    this.contador = this.profesores.length>0?this.numTurno%this.profesores.length:0;
     this.desdoblarSi5 = false;
     this._primeraMuestra = false;
     this.nuevo = true
@@ -65,15 +67,17 @@ function Turno(
             "numTurno": this.numTurno
             , "hora_gr": this.hora_gr
             , "hora_j": this.hora_j
-            , "conduce": this.profesores[this.contador]
-            , "acompanantes": this.profesores.slice(0,this.contador).concat(this.profesores.slice(this.contador+1))
+            , "conductor": this.profesores[this.contador].nombre
+            , "acompanantes": this.profesores.slice(0,this.contador).concat(this.profesores.slice(this.contador+1)).map( p => p.nombre )
             , "lugar": this.lugar
             , "comentarios": this.comentarios
             , "desdoblarSi5": this.desdoblarSi5
             , "nuevo": this.nuevo
             , "cambio": this.cambio
             , "contador": this.contador
+            , "correos": this.correos
         }
+
         this.incrementaContador();
         this.nuevo = false;
         this.cambio = false;
