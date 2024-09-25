@@ -1,3 +1,8 @@
+
+
+.header__logo {
+    display: none;
+}
 .dia {
     border: 1px solid rgba(200, 200, 255, .8);
     border-radius: 5px;
