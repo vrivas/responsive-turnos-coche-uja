@@ -19,7 +19,7 @@ Date.prototype.toComparableString = function() {
 
 Date.prototype.toDD_MMM_YYY = function() {
     let year=this.getFullYear();
-    let month=this.getMonth()+1;
+    let month=this.getMonth();
     let day=this.getDate();
     return day+"-"+NOMBRE_MESES_3_LETRAS[month]+"-"+year;
 }

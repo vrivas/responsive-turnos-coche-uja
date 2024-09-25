@@ -12,10 +12,10 @@
     text-align: right;
     padding-right: 0.3em;
 }
-.hoy{
-    background-color: rgba(200, 255, 200, .8);
+#hoy{
+    background-color: rgba(200, 255, 200, .3);
 }
-.hoy .fecha-dia{
+#hoy .fecha-dia{
     background-color: rgba(200, 255, 200, 1);
 }
 

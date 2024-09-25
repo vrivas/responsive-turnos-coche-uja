@@ -5,8 +5,9 @@ function diaToDiv( ) {
     let msj="";
     // clases aplicables al día
     let clasesDia=["dia"];
+    let idDia="";
     if( this.festivo!=null ) clasesDia.push("no-lectivo");
-    if( this.fecha.toComparableString()==(new Date()).toComparableString() ) clasesDia.push("hoy");
+    if( this.fecha.toComparableString()==(new Date()).toComparableString() ) idDia="id='hoy'";
     clasesDia=clasesDia.join(" ");
     // Contenido de cada dia
     let divFecha=`<div class='fecha-dia'>${this.fecha.toDD_MMM()}</div>`;
@@ -14,7 +15,7 @@ function diaToDiv( ) {
     let divTurnos="";
     this.infoTurnos.filter( it => !null).forEach(it => divTurnos+=infoTurnoToDiv(it) );
 
-    return `<div class='${clasesDia}'>
+    return `<div class='${clasesDia}' ${idDia}>
         ${divFecha}
         ${divEficiencia}
         ${divTurnos}
