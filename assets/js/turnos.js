@@ -103,11 +103,15 @@ function infoTurnoToDiv(info) {
     // clases aplicables al día
     clasesInfoTurno=clasesInfoTurno.join(" ");
     return `<div class='${clasesInfoTurno}'>
-        ${divNumTurno}
-        ${divNuevo}
-        ${divCambio}
-        ${divHorario}
-        ${divPersonas}
+        <div class='numero-y-cambios'>
+            ${divNumTurno}
+            ${divNuevo}
+            ${divCambio}
+        </div>
+        <div class='horas-y-personas'>
+            ${divHorario}
+            ${divPersonas}
+        </div>
     </div>`
 }
 

@@ -4,6 +4,7 @@
     background-color: rgba(200, 200, 250, .1);
     margin: 2px;
     padding: 2px;
+
 }
 
 .hoy{
@@ -58,4 +59,22 @@
 
   .horario {
     font-size: 80%;
+  }
+
+  .numero-y-cambios {
+    float: left;
+    width: 3em;
+    text-align: center;
+    border-right: 1pt solid rgba(200, 200, 255, .8);
+  }
+
+  .horas-y-personas {
+    float: left;
+  }
+
+  .info-turno {
+    clear: both;
+  }
+  .separador {
+    clear:both;
   }

@@ -18,6 +18,7 @@ function diaToDiv( ) {
         ${divFecha}
         ${divEficiencia}
         ${divTurnos}
+        <div class='separador'></div>
     </div>`
 }
 // Objeto Dia
