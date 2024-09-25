@@ -91,12 +91,21 @@ function infoTurnoToDiv(info) {
     let msj="";
     let clasesInfoTurno=["info-turno"];
     let divNumTurno=`<div class='num-turno'>${info.numTurno}</div>`;
+    let divNuevo=info.nuevo?"<div class='etiqueta-nuevo'>N</div>":"";
+    let divCambio=info.cambio?"<div class='etiqueta-cambio'>M</div>":"";
     let divHorario=`<div class='horario'>${info.hora_gr}-${info.hora_j}</div>`;
-    let divPersonas=`<div class='personas'>${info.conductor}: ${info.acompanantes.join(", ")}</div>`;
+    let spanConductor=`<span class="nombre-conductor">${info.conductor}</span>`;
+    let spanAcompanantes=info.acompanantes.length>0?`<span class="nombres-acompanantes">(${info.acompanantes.join(", ")})</span>`:"";
+    let divPersonas=`<div class='personas'>
+            ${spanConductor}
+            ${spanAcompanantes}
+        </div>`;
     // clases aplicables al día
     clasesInfoTurno=clasesInfoTurno.join(" ");
     return `<div class='${clasesInfoTurno}'>
         ${divNumTurno}
+        ${divNuevo}
+        ${divCambio}
         ${divHorario}
         ${divPersonas}
     </div>`

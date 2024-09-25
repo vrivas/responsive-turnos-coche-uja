@@ -16,8 +16,42 @@
 .fecha-dia {
     background-color: rgba(200, 200, 255, 1);
     text-align: right;
+    padding-right: 0.3em;
 }
 
 .no-lectivo .fecha-dia {
     background-color: rgba(255, 200, 200, 1);
 }
+
+.etiqueta-nuevo {
+    border-radius: 5px 0 5px 0;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 60%;
+    margin-left: .5em;
+    padding: 0 .5em 0 0.5em;
+    width: 1.8em;
+  }
+
+  .etiqueta-cambios {
+    border-radius: 5px 0 5px 0;
+    background-color: rgb(230, 165, 92);
+    color: white;
+    font-weight: bold;
+    font-size: 60%;
+    margin-left: .5em;
+    padding: 0 .5em 0 0.5em;
+    width: 1.8em;
+
+  }
+
+  .nombre-conductor {
+    font-weight: bold;
+    font-size: 100%;
+  }
+
+  .nombres-acompanantes {
+    color: rgba(0,0,0, .5);
+    font-size: 90%;
+  }
