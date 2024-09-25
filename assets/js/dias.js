@@ -1,6 +1,13 @@
 /// Genera los días del cuatrimestre
 let D=[];
 
+function diaToDiv( ) {
+    let msj="";
+    let clasesDia=[];
+    if( this.festivo!=null ) clasesDia.push("no-lectivo");
+    if( this.fecha.toComparableString()==(new Date()).toComparableString() ) clasesDia.push("hoy");
+    return `<div class='${clasesDia.join(" ")}'>${this.fecha}</div>`
+}
 // Objeto Dia
 function Dia( fecha ) {
     this.fecha = fecha;
@@ -10,6 +17,7 @@ function Dia( fecha ) {
         return this;
     }
     this.festivo=null;
+    this.toDiv=diaToDiv;
 }
 
 function esNoLectivo( unaFecha ) {
