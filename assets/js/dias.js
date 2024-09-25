@@ -10,8 +10,10 @@ function diaToDiv( ) {
     clasesDia=clasesDia.join(" ");
     // Contenido de cada dia
     let divFecha=`<div class='fecha-dia'>${this.fecha.toDD_MMM()}</div>`;
-    let divEficiencia=`<div class='eficiencia-dia'>${this.eficiencia}</div>`;
+    let divEficiencia=`<div class='eficiencia-dia'>Eficiencia ${this.eficiencia}</div>`;
     let divTurnos="";
+    this.infoTurnos.filter( it => !null).forEach(it => divTurnos+=infoTurnoToDiv(it) );
+
     return `<div class='${clasesDia}'>
         ${divFecha}
         ${divEficiencia}
@@ -21,9 +23,9 @@ function diaToDiv( ) {
 // Objeto Dia
 function Dia( fecha ) {
     this.fecha = fecha;
-    this.turnos = [];
-    this.addTurno = function( turno ) {
-        this.turnos.push(turno);
+    this.infoTurnos = [];
+    this.addInfoTurno = function( info ) {
+        this.infoTurnos.push(info);
         return this;
     }
     this.festivo=null;
@@ -65,7 +67,7 @@ function rellenaDias() {
                 if( t.dia==d.getDay() ) {
                     if( comparaFechas(t.fechaInicio,d)<=0 
                         && comparaFechas(t.fechaFin,d)>=0 ) {
-                        dia.addTurno(t.getInfoParaDia());
+                        dia.addInfoTurno(t.getInfoParaDia());
                     }
                 }
             }
