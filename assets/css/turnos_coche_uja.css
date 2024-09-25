@@ -1,3 +1,7 @@
+#header {
+    bottom: 0px;
+    top: auto
+}
 .header__logo {
     visibility: hidden;
 }
