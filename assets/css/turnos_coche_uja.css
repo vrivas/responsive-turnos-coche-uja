@@ -1,7 +1,5 @@
-
-
 .header__logo {
-    display: none;
+    visibility: hidden;
 }
 .dia {
     border: 1px solid rgba(200, 200, 255, .8);
